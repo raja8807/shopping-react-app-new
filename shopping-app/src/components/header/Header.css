@@ -1,0 +1,27 @@
+header{
+    background-color: #70edd6;
+}
+
+.headerWrapper{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo p{
+    color: #ff4b4b;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: cursive;
+}
+
+nav a{
+    margin-left: 20px;
+    color: #ff9552;
+    font-weight: bold;
+}
+
+nav a:hover{
+    color: #ff4b4b;
+}
