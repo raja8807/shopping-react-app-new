@@ -1,0 +1,32 @@
+.orderedItem{
+    background-color: #70edd6;
+    /* height: 70px; */
+    padding: 20px;
+    width: 100%;
+    border-radius: 40px;
+    margin: 20px 0px;
+}
+
+.orderedImage{
+    width: 40px;
+    height: 40px;
+    border: 1px solid red;
+    border-radius: 50%;
+}
+
+.orderedItem{
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.orderedQtyBox{
+    display: flex;
+}
+
+.orderNowBox{
+    /* border: 1px solid red; */
+    /* width: 100%; */
+    text-align: center;
+}

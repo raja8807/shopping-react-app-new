@@ -1,10 +1,9 @@
 import './Products.css'
-
 import Product from './Product'
 
 function Products() {
 
-    const products = [
+    const productList = [
         {
             name: "iuhsdc",
             price: 1233
@@ -36,7 +35,7 @@ function Products() {
             <div className="container">
                 <div className="ProductsWrapper">
         {
-            products.map((product)=>{
+            productList.map((product)=>{
                return <Product name={product.name} price={product.price}></Product>
             })
         }

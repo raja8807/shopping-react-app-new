@@ -9,6 +9,7 @@ function Product(props){
             <div className="productDetails">
                 <h1>{props.name}</h1>
                 <h2>{props.price}</h2>
+                <button>Order</button>
             </div>
         </div>
     )
