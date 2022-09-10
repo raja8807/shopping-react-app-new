@@ -4,17 +4,23 @@ import Cart from '../cart/cart';
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
+import { createContext, useContext } from "react";
+import ReactDOM from "react-dom/client";
+
+
+
 function Header(props) {
 
-    const [isLoggedin , setIsLoggedIN] = useState(false)
+    const [isLoggedin , setIsLoggedIN] = useState(props.isLoggedin)
+
+    // const isLoggedIn = useContext(UserContext);
 
     useEffect(()=>{
-        setInterval(()=>{
-            setIsLoggedIN(localStorage.getItem("login"))
-        },10)
-    },[])
+        setIsLoggedIN(props.isLoggedin)
+    },[props])
 
     return (
+        
         <header>
             <div className="container">
                 <div className="headerWrapper">
@@ -24,9 +30,11 @@ function Header(props) {
                     <nav>
                         <Link to="/">Home</Link>
                         <a href='#'>SignUp</a>
-                        {isLoggedin=="true" && <Link to='/login' onClick={props.logout}>Logout</Link> }
+                        {isLoggedin && <Link to='/' onClick={props.logout}>Logout</Link> }
                     </nav>
-                    <Cart></Cart>
+                    {isLoggedin && <Cart added={props.added}></Cart>}
+
+                   
                 </div>
             </div>
         </header>

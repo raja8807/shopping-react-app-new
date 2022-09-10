@@ -12,8 +12,8 @@ function Login(props) {
         event.preventDefault()
         // alert("ok")
         if(event.target[0].value == "x"){
+        navigateTo("/")
         props.login()
-        // navigateTo("/products")
         }else{
             event.target[0].value = ""
             event.target[1].value = ""

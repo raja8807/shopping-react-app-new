@@ -1,5 +1,30 @@
 .ProductsWrapper{
-    display: flex;
-    justify-content:space-between;
+    /* display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start; */
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.loading{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 300px;
+    left: 50%;
+}
+
+@media screen and (max-width : 768px) {
+    .ProductsWrapper{
+        /* background-color: red; */
+    grid-template-columns: auto auto;
+
+    }
+}
+
+@media screen and (max-width : 600px) {
+    .ProductsWrapper{
+        /* background-color: red; */
+    grid-template-columns: auto;
+    }
 }

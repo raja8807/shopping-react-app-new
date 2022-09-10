@@ -1,23 +1,40 @@
 import './orderedItems.css'
+import {useState} from 'react'
 
-function OrderedItems() {
+function OrderedItems(props) {
+    const [qty , setQty] = useState(1)
+    // const [price , setPrice] = useState(props.price)
+
+    const add = ()=>{
+        setQty(qty+1)
+        console.log(props.image);
+    }
+
+    const sub = ()=>{
+        setQty(qty-1)
+    }
+
+    function remove(){
+        props.remove(props.id)
+        // console.log(props.id);
+    }
+
     return (
         <div className='orderedItem'>
             <div className='orderedImage'>
-
+<img src={props.image}/>
             </div>
 
-            <p>Product Name</p>
+            <p>{props.name}</p>
 
             <div className='orderedQtyBox'>
-                <button>-</button>
-                <p className='orderedQty'>0</p>
-                <button>+</button>
+                <button onClick={sub} disabled={qty==1}>-</button>
+                <p className='orderedQty'>{qty}</p>
+                <button onClick={add}>+</button>
             </div>
+            <p>{qty * props.price}</p>
 
-            <p>Price</p>
-
-            <button>X</button>
+            <button onClick={remove}>X</button>
         </div>
     )
 }
