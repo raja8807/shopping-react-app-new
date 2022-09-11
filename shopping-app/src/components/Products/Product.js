@@ -1,30 +1,28 @@
 import './Product.css'
+import { useState } from 'react'
 
-import {useState} from 'react'
+import { useContext } from 'react'
+import { AppContexts } from '../context'
 
-function Product(props){
+function Product(props) {
 
-    // const[ordered , setOrdered] = useState(false)
+    // const [ordered, setOrdered] = useState("hi")
 
-    function addToCart(){
-        const item = {
-            id : props.id,
-            name : props.name,
-            price : props.price,
-            image : props.image
-        }
-        props.add(item)
+    const add = useContext(AppContexts).addToCart
+    function addToCart() {
+        add(props.product)
     }
 
     return (
         <div className="product">
             <div className="productImage">
-<img src={props.image}/>
+                <img src={props.image} />
             </div>
             <div className="productDetails">
                 <h1>{props.name}</h1>
                 <h2>{props.price}</h2>
-                <button onClick={()=>{
+                <button onClick={() => {
+                    
                     addToCart();
                 }}>Add To Cart</button>
             </div>

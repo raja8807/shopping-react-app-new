@@ -1,5 +1,7 @@
 header{
     background-color: #70edd6;
+    position: sticky;
+    top: 0;
 }
 
 .headerWrapper{

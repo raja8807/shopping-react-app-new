@@ -1,6 +1,8 @@
 import './App.css';
-import { Routes, Route, Link, useParams } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+
+import { AppContexts } from './components/context';
 
 import Header from './components/header/Header';
 import Products from './components/Products/Products';
@@ -10,58 +12,74 @@ import CartScreen from './components/cart/cartScreen';
 
 function App() {
 
+  const [isLoggedin, setIsLoggedin] = useState(false)
+  const [cartItems, setCartItems] = useState([])
 
-  const [isLoggedin, setIsLoggedIN] = useState(false)
-  const [added, setAdded] = useState([])
+  useEffect(() => {
+    if (sessionStorage.getItem("isLoggedIn") === "true") {
+      setIsLoggedin(true)
+    } else if (sessionStorage.getItem("isLoggedIn") === "false") {
+      setIsLoggedin(false)
+    }
 
-  // useEffect(()=>{
-  //   setIsLoggedIN(localStorage.getItem("login"))
-  // },[])
+    let cart = JSON.parse(sessionStorage.getItem("cart"))
+
+    if (sessionStorage.getItem("cart")) {
+      setCartItems([...cart])
+    }
+    // console.log(sessionStorage.getItem("login"));
+  }, [])
 
   function login() {
-    // localStorage.setItem("isLoggedIn" , true)
-    // alert("ok")
-    setIsLoggedIN(true)
+    sessionStorage.setItem("isLoggedIn", "true")
+    setIsLoggedin(true)
   }
 
   function logout() {
-    // localStorage.setItem("isLoggedIn" , false)
-    setIsLoggedIN(false)
+    sessionStorage.setItem("isLoggedIn", "false")
+    setIsLoggedin(false)
   }
 
-  function addToCart(item) {
-    console.log(item);
-    // alert('ok')
-    setAdded((prevList) => {
-      return [...prevList, item]
+  function addToCart(newItem) {
+    setCartItems((prevList) => {
+      for (let item of cartItems) {
+        if (newItem.id == item.id) {
+          return prevList
+        }
+      }
+      let newCartItems = [...prevList, newItem]
+      sessionStorage.setItem("cart", JSON.stringify(newCartItems))
+      return newCartItems
     })
-    // console.log(added);
   }
 
   function removeItem(id) {
-    let list = []
+    let newCartItems = []
     let index = 0
-    for (let i = 0; i < added.length; i++) {
-      if (added[i].id != id) {
-        list[index] = added[i]
+    for (let i = 0; i < cartItems.length; i++) {
+      if (cartItems[i].id != id) {
+        newCartItems[index] = cartItems[i]
         index++
       }
     }
-    console.log(list);
-    setAdded(list)
+    // console.log(list);
+    sessionStorage.setItem("cart", JSON.stringify([...newCartItems]))
+    setCartItems(newCartItems)
     // console.log(id);
   }
 
 
   return (
     <div className="App">
-        <Header logout={logout} isLoggedin={isLoggedin} added={added}></Header>
+      <AppContexts.Provider value={{ isLoggedin, addToCart, cartItems }}>
+        <Header logout={logout}></Header>
         <Routes>
-          <Route index element={isLoggedin == true ? <Products add={addToCart}></Products> : <Login login={login}></Login>} />
-          <Route path='cart' element={isLoggedin == true ? <CartScreen added={added} remove={removeItem}></CartScreen> : <Login login={login}></Login>} />
+          <Route index element={isLoggedin == true ? <Products></Products> : <Login login={login}></Login>} />
+          <Route path='cart' element={isLoggedin == true ? <CartScreen remove={removeItem}></CartScreen> : <Login login={login}></Login>} />
           <Route path='login' element={<Login login={login}></Login>} />
         </Routes>
-      </div>
+      </AppContexts.Provider>
+    </div>
   );
 }
 

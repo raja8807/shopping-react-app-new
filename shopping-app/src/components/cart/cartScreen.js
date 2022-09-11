@@ -2,25 +2,30 @@ import './cartScreen.css'
 import { useState , useEffect } from 'react';
 import OrderedItems from './orderedItems'
 
-function CartScreen(props) {
+import {useContext} from 'react'
+import {AppContexts} from '../context'
 
-    const [added , setAdded] = useState([])
+function CartScreen() {
 
-    useEffect(()=>{
-        setAdded([...props.added])
-        // console.log(props.added[0].id);
-        // alert("ok")
-    },[props])
+    // const [cartItems , setCartItems] = useState([])
+
+    const cartItems = useContext(AppContexts).cartItems
+
+    // useEffect(()=>{
+    //     setCartItems([...props.cartItems])
+    //     // console.log(props.cartItems[0].id);
+    //     // alert("ok")
+    // },[props])
 
 
     return (
         <div className='cartScreen'>
             <div className='container'>
                 {
-                    added.length == 0 && <p>Nothing</p>
+                    cartItems.length == 0 && <p>Nothing</p>
                 }
                 {
-                    added.map((item)=>{
+                    cartItems.map((item)=>{
                         // console.log(item.id);
                         return <OrderedItems  key={Math.random()} name={item.name} price={item.price} remove={props.remove} id={item.id} image={item.image}></OrderedItems>
                     })

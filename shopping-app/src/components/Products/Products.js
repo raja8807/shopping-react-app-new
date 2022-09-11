@@ -2,10 +2,13 @@ import './Products.css'
 import Product from './Product'
 import {useState, useEffect} from 'react'
 
+import { useContext } from 'react'
+import { AppContexts } from '../context'
+
 import loadingImg from './loading.gif'
 
 
-function Products(props) {
+function Products() {
 
     // const [add , setAdd] = useState(props.add)
 
@@ -31,12 +34,13 @@ function Products(props) {
         {
             productList.map((product)=>{
                 // console.log(i);
-               return <Product key={Math.random()} 
+               return <Product key={Math.random()}
+               product={product}
                id={product.id} 
                name={product.name} 
                price={product.price} 
-               image = {product.image}
-               add={props.add}></Product>
+               image = {product.image}>
+               </Product>
             })
         }
         {isLoading && <img className='loading' src={loadingImg}/>}

@@ -3,21 +3,21 @@ import Cart from '../cart/cart';
 
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
-
-import { createContext, useContext } from "react";
-import ReactDOM from "react-dom/client";
-
+import {useContext} from 'react'
+import {AppContexts} from '../context'
 
 
 function Header(props) {
 
-    const [isLoggedin , setIsLoggedIN] = useState(props.isLoggedin)
+    // const [isLoggedin , setIsLoggedin] = useState(props.isLoggedin)
 
-    // const isLoggedIn = useContext(UserContext);
+    // // const isLoggedIn = useContext(UserContext);
 
-    useEffect(()=>{
-        setIsLoggedIN(props.isLoggedin)
-    },[props])
+    // useEffect(()=>{
+    //     setIsLoggedin(props.isLoggedin)
+    // },[props])
+
+    const isLoggedIn = useContext(AppContexts).isLoggedin
 
     return (
         
@@ -30,9 +30,9 @@ function Header(props) {
                     <nav>
                         <Link to="/">Home</Link>
                         <a href='#'>SignUp</a>
-                        {isLoggedin && <Link to='/' onClick={props.logout}>Logout</Link> }
+                        {isLoggedIn && <Link to='/' onClick={props.logout}>Logout</Link> }
                     </nav>
-                    {isLoggedin && <Cart added={props.added}></Cart>}
+                    {isLoggedIn && <Cart cartItems={props.cartItems}></Cart>}
 
                    
                 </div>
