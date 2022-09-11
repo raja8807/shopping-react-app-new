@@ -5,7 +5,7 @@ import OrderedItems from './orderedItems'
 import {useContext} from 'react'
 import {AppContexts} from '../context'
 
-function CartScreen() {
+function CartScreen(props) {
 
     // const [cartItems , setCartItems] = useState([])
 
