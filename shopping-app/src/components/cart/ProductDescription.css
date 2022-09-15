@@ -1,0 +1,15 @@
+.ProductDescription-image-area{
+    height: 200px;
+    width: 300px;
+    margin-right: 20px;
+}
+
+.ProductDescription-image-area img{
+    width: 100%;
+    height: 100%;
+}
+
+.ProductDescription-wrapper{
+    display: flex;
+    justify-content: space-around;
+}

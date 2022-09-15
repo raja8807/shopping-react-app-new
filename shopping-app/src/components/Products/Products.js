@@ -16,6 +16,7 @@ function Products() {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
+        setIsLoading(true)
         fetch('https://63106c3b826b98071a410ecf.mockapi.io/shopping').then((response)=>{
             if(response.ok){
                 return response.json()

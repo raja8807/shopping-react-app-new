@@ -2,17 +2,15 @@ import './Header.css'
 import Cart from '../cart/cart';
 
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react';
-import {useContext} from 'react'
-import {AppContexts} from '../context'
-
+// import { useState, useEffect } from 'react';
+import { useContext } from 'react'
+import { AppContexts } from '../context'
 
 function Header(props) {
 
     // const [isLoggedin , setIsLoggedin] = useState(props.isLoggedin)
 
-    // // const isLoggedIn = useContext(UserContext);
-
+    // // const isLoggedIn = useContext(UserContext); 
     // useEffect(()=>{
     //     setIsLoggedin(props.isLoggedin)
     // },[props])
@@ -20,7 +18,7 @@ function Header(props) {
     const isLoggedIn = useContext(AppContexts).isLoggedin
 
     return (
-        
+
         <header>
             <div className="container">
                 <div className="headerWrapper">
@@ -29,12 +27,11 @@ function Header(props) {
                     </div>
                     <nav>
                         <Link to="/">Home</Link>
-                        <a href='#'>SignUp</a>
-                        {isLoggedIn && <Link to='/' onClick={props.logout}>Logout</Link> }
+                        <Link to='/signup'>Signup</Link>
+                        {isLoggedIn && <Link to='/' onClick={props.logout}>Logout</Link>}
+                        {/* <i class="fa fa-twitter"></i> */}
                     </nav>
                     {isLoggedIn && <Cart cartItems={props.cartItems}></Cart>}
-
-                   
                 </div>
             </div>
         </header>

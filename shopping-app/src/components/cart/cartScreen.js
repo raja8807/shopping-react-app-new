@@ -1,37 +1,46 @@
 import './cartScreen.css'
-import { useState , useEffect } from 'react';
+import { useEffect } from 'react';
 import OrderedItems from './orderedItems'
 
-import {useContext} from 'react'
-import {AppContexts} from '../context'
+import { useContext } from 'react'
+import { AppContexts } from '../context'
+import { Outlet, useNavigate } from 'react-router-dom';
 
 function CartScreen(props) {
 
-    // const [cartItems , setCartItems] = useState([])
-
+    const navigateto = useNavigate()
     const cartItems = useContext(AppContexts).cartItems
+    const clearCart = useContext(AppContexts).clearCart
 
-    // useEffect(()=>{
-    //     setCartItems([...props.cartItems])
-    //     // console.log(props.cartItems[0].id);
-    //     // alert("ok")
-    // },[props])
-
+    useEffect(() => {
+        if (cartItems.length == 0) {
+            navigateto('/cart')
+        }
+    }, [cartItems])
 
     return (
         <div className='cartScreen'>
             <div className='container'>
+                <Outlet></Outlet>
                 {
                     cartItems.length == 0 && <p>Nothing</p>
                 }
                 {
-                    cartItems.map((item)=>{
-                        // console.log(item.id);
-                        return <OrderedItems  key={Math.random()} name={item.name} price={item.price} remove={props.remove} id={item.id} image={item.image}></OrderedItems>
+                    cartItems.map((item,i) => {
+                        return <OrderedItems
+                            index = {i}
+                            key={Math.random()}
+                            name={item.name} price={item.price}
+                            remove={props.remove} id={item.id}
+                            image={item.image}>
+                        </OrderedItems>
                     })
                 }
+
                 <div className='orderNowBox'>
-<button>Order Now</button>
+                    <button onClick={() => {
+                        clearCart()
+                    }}>Clear Cart</button>
                 </div>
             </div>
         </div>

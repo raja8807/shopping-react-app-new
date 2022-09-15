@@ -1,6 +1,6 @@
 .login{
     height: 86vh;
-    background-color: #b9fff8;
+    /* background-color: #b9fff8; */
 }
 
 .loginWrapper{
@@ -18,11 +18,61 @@
     border-radius: 20px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
     flex-direction: column;
     text-align: center;
+    box-shadow: 0px 0px 20px 1px rgba(128, 128, 128, 0.5);
+
+}
+
+.login h1{
+    margin-bottom: 20px;
+}
+
+#loginBtn{
+    padding: 5px 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#loginBtn:hover{
+    background-color: #ff4b4b;
+    color: white;
+    transform: scale(1.1);
+}
+
+#loginBtn:active{
+    transform: scale(1);
 }
 
 .wrong{
-    border: 2px solid red;
+    border: 2px solid red !important;
+}
+
+
+
+.loginForm input{
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    padding: 0px 10px;
+}
+
+#passwordInput{
+    border-radius: 20px 0px 0px 20px;
+    margin: 20px 0px;
+    /* height: 31px; */
+}
+
+.loginForm input[type="button"]{
+    width: 30px;
+    border-radius: 0px 20px 20px 0px;
+    background-color: white;
+    margin-top: 1px;
+    cursor: pointer;
+    height: 32px;
+}
+
+.loginForm input[type="button"]:hover{
+    background-color: grey;
 }

@@ -4,16 +4,21 @@ import { useState, useEffect } from 'react';
 
 import { AppContexts } from './components/context';
 
+import usersList from './components/context'
+
 import Header from './components/header/Header';
 import Products from './components/Products/Products';
 import Login from './components/login/login';
 import CartScreen from './components/cart/cartScreen';
+import ProductDescription from './components/cart/ProductDescription';
+import Signup from './components/sugnup/Signup';
 
 
 function App() {
 
   const [isLoggedin, setIsLoggedin] = useState(false)
   const [cartItems, setCartItems] = useState([])
+  const [users , setUsers] = useState([...usersList])
 
   useEffect(() => {
     if (sessionStorage.getItem("isLoggedIn") === "true") {
@@ -53,6 +58,10 @@ function App() {
     })
   }
 
+  function clearCart() {
+    setCartItems([])
+  }
+
   function removeItem(id) {
     let newCartItems = []
     let index = 0
@@ -71,12 +80,15 @@ function App() {
 
   return (
     <div className="App">
-      <AppContexts.Provider value={{ isLoggedin, addToCart, cartItems }}>
+      <AppContexts.Provider value={{ isLoggedin, addToCart, cartItems, clearCart, users, setUsers }}>
         <Header logout={logout}></Header>
         <Routes>
           <Route index element={isLoggedin == true ? <Products></Products> : <Login login={login}></Login>} />
-          <Route path='cart' element={isLoggedin == true ? <CartScreen remove={removeItem}></CartScreen> : <Login login={login}></Login>} />
+          <Route path='cart' element={isLoggedin == true ? <CartScreen remove={removeItem}></CartScreen> : <Login login={login}></Login>}>
+            <Route path='description/:id' element={isLoggedin == true ? <ProductDescription></ProductDescription> : <Login login={login}></Login>} />
+          </Route>
           <Route path='login' element={<Login login={login}></Login>} />
+          <Route path='signup' element={<Signup/>}/>
         </Routes>
       </AppContexts.Provider>
     </div>

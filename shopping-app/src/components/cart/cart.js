@@ -8,13 +8,7 @@ import {AppContexts} from '../context'
 
 function Cart() {
     let navigateTo = useNavigate()
-
-    // const [cartItems, setCartItems] = useState([...props.cartItems])
     const cartItems = useContext(AppContexts).cartItems
-
-    // useEffect(()=>{
-    //     setCartItems([...props.cartItems])
-    // },[props])
 
     return (
         <div className='cart' onClick={()=>{
