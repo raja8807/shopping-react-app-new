@@ -15,6 +15,26 @@
     left: 50%;
 }
 
+.filterBtnArea{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.filterBtn{
+    border: none;
+    background-color: rgba(240, 248, 255, 0);
+    cursor: pointer;
+    color: #ff9552;
+}
+
+.filterBtn:hover{
+    color: #ff4b4b;
+    transform: scale(1.2);
+
+}
+
+
+
 @media screen and (max-width : 768px) {
     .ProductsWrapper{
         /* background-color: red; */

@@ -9,7 +9,29 @@
 }
 
 .cartIcon{
-    font-size: 30px;
+    font-size: 40px;
+    color: #ff9552;
+    position: relative;
+    width: 40px;
+}
+
+.cartIcon i{
+    /* color: red; */
+    position: absolute;
+    left: 0;
+}
+
+.cartIcon i:hover{
+    animation: roll 0.5s infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes roll{
+    0% {left: 0;}
+    25% {left: 4px;}
+    50% {left: 8px;}
+    75% {left: 16px;}
+    100% {left: 24px;}
 }
 
 .cartNum{
@@ -20,4 +42,5 @@
     border-radius: 50%;
     left: 20px;
     bottom: 13px;
+    z-index: 1;
 }

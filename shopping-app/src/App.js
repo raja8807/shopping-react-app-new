@@ -13,14 +13,14 @@ import CartScreen from './components/cart/cartScreen';
 import ProductDescription from './components/cart/ProductDescription';
 import Signup from './components/signup/Signup';
 import NotFound from './components/NotFound';
-import Product from './components/Products/Product';
+
 
 
 function App() {
 
   const [isLoggedin, setIsLoggedin] = useState(false)
   const [cartItems, setCartItems] = useState([])
-  const [users , setUsers] = useState([...usersList])
+  const [users, setUsers] = useState([...usersList])
   const [currentUser, setCurrentUser] = useState("")
 
   useEffect(() => {
@@ -81,7 +81,6 @@ function App() {
     // console.log(id);
   }
 
-
   return (
     <div className="App">
       <AppContexts.Provider value={{ isLoggedin, addToCart, cartItems, clearCart, users, setUsers, currentUser, setCurrentUser }}>
@@ -92,13 +91,12 @@ function App() {
             <Route path='description/:id' element={isLoggedin == true ? <ProductDescription></ProductDescription> : <Login login={login}></Login>} />
           </Route>
           <Route path='login' element={<Login login={login}></Login>} />
-          <Route path='signup' element={<Signup/>}/>
-          <Route path='*' element={<NotFound></NotFound>}/>
+          <Route path='signup' element={<Signup />} />
+          <Route path='*' element={<NotFound></NotFound>} />
         </Routes>
       </AppContexts.Provider>
     </div>
   );
 }
-
 
 export default App;
