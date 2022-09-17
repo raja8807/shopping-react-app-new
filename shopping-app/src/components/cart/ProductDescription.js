@@ -11,7 +11,7 @@ function ProductDescription() {
     // console.log(params);
 
     const [currentProduct, setCurrentProduct] = useState({})
-    const [isLoadig, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         if (currentProduct.id != params.id) {
@@ -35,11 +35,11 @@ function ProductDescription() {
             <div className='ProductDescription-wrapper'>
 
                 <div className='ProductDescription-image-area'>
-                    <img src={isLoadig ? loading : currentProduct.image} />
+                    <img src={isLoading ? loading : currentProduct.image} />
                 </div>
                 <div className='ProductDescription-details-area'>
                     <h1>{currentProduct.name}</h1>
-                    <h2 style={{margin : "10px 0px" }}>{"Rs." + currentProduct.price}</h2>
+                    {!isLoading && <h2 style={{margin : "10px 0px" }}>{"Rs." + currentProduct.price}</h2>}
                     <p>{currentProduct.description}</p>
                 </div>
 

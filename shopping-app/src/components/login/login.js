@@ -1,18 +1,18 @@
 import './login.css'
 
 import { useEffect } from 'react';
-
 import { useNavigate } from "react-router-dom";
+
 import { useState } from 'react';
 
-import {AppContexts} from '../context'
-import {useContext} from 'react'
+import { AppContexts } from '../context'
+import { useContext } from 'react'
 
 function Login(props) {
 
-    let navigateTo = useNavigate()
+    // let navigateTo = useNavigate()
     let users = useContext(AppContexts).users
-    let setUsers = useContext(AppContexts).setUsers
+    // let setUsers = useContext(AppContexts).setUsers
 
     const [chkField, setChk] = useState("input")
     const [pwdType, setPwdType] = useState("password")
@@ -33,11 +33,12 @@ function Login(props) {
             // console.log(user);
             return user.userName == userName
         })
-        if(thisUser){
-            if(thisUser.password == password){
-                props.login()
+        if (thisUser) {
+            if (thisUser.password == password) {
+                props.login(userName)
+
             }
-        }else{
+        } else {
             setChk("input wrong")
             setUserName("")
             setPassword("")
@@ -60,7 +61,8 @@ function Login(props) {
                         <h1>Login</h1>
                         <form onSubmit={loginHandler} className="loginForm">
                             <input type="text" className={chkField} id="usernameInput" placeholder='username' value={userName} onChange={userNameHandler} />
-                            <input type={pwdType} placeholder='password' id="passwordInput" className={chkField} value={password} onChange={passwordHandler} /><input className='eye' type={"button"} value="" onClick={tooglePwd} /> <br />
+                            <input type={pwdType} placeholder='password' id="passwordInput" className={chkField} value={password} onChange={passwordHandler} />
+                            <input className='eye' type={"button"} value="&#128065;" onClick={tooglePwd} /> <br />
                             <input type={"submit"} value='Login' id='loginBtn' />
                         </form>
                     </div>

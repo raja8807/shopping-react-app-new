@@ -37,10 +37,11 @@ function Products() {
                 // console.log(i);
                return <Product key={Math.random()}
                product={product}
-               id={product.id} 
-               name={product.name} 
-               price={product.price} 
-               image = {product.image}>
+            //    id={product.id} 
+            //    name={product.name} 
+            //    price={product.price} 
+            //    image = {product.image}
+               >
                </Product>
             })
         }

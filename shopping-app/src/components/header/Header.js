@@ -16,6 +16,7 @@ function Header(props) {
     // },[props])
 
     const isLoggedIn = useContext(AppContexts).isLoggedin
+    const currentUser = useContext(AppContexts).currentUser
 
     return (
 
@@ -23,7 +24,7 @@ function Header(props) {
             <div className="container">
                 <div className="headerWrapper">
                     <div className="logo">
-                        <p>Logo.</p>
+                        <p>{"Hi "+currentUser}</p>
                     </div>
                     <nav>
                         <Link to="/">Home</Link>

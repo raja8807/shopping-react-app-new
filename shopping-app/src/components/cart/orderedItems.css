@@ -73,3 +73,9 @@
 .decrease:hover{
     background-color: red;
 }
+
+.decrease[disabled]:hover{
+    cursor:not-allowed;
+    /* opacity: 0; */
+    background-color: grey;
+}

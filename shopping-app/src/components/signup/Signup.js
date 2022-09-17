@@ -31,13 +31,16 @@ function Signup() {
                 newUser.userName = userName
                 newUser.password = password
                 setUsers((prev)=>{
+                    alert(userName + " signup sucessfull")
                     return [...prev , newUser]
                 })
-                console.log(users);
             }
         } else {
             alert("6 chars")
         }
+        event.target[0].value = ""
+        event.target[1].value = ""
+        event.target[2].value = ""
     }
 
     return (
@@ -49,7 +52,7 @@ function Signup() {
                         <form className="loginForm" onSubmit={signupHandler}>
                             <input type={'text'} placeholder="Username" onChange={userNameHandler}/>
                             <input type={'password'} className="signUpPwd" onChange={passwordHandler} placeholder='Password' />
-                            <input type={'password'} placeholder='Confirm Password' /><br />
+                            <input type={'password'} placeholder='Confirm Password' /><br/>
                             <input type={'submit'} className="signUpBtn" value={'Signup'} />
                         </form>
                     </div>

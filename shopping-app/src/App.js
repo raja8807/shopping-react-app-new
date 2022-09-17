@@ -11,7 +11,8 @@ import Products from './components/Products/Products';
 import Login from './components/login/login';
 import CartScreen from './components/cart/cartScreen';
 import ProductDescription from './components/cart/ProductDescription';
-import Signup from './components/sugnup/Signup';
+import Signup from './components/signup/Signup';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [isLoggedin, setIsLoggedin] = useState(false)
   const [cartItems, setCartItems] = useState([])
   const [users , setUsers] = useState([...usersList])
+  const [currentUser, setCurrentUser] = useState("")
 
   useEffect(() => {
     if (sessionStorage.getItem("isLoggedIn") === "true") {
@@ -32,17 +34,18 @@ function App() {
     if (sessionStorage.getItem("cart")) {
       setCartItems([...cart])
     }
-    // console.log(sessionStorage.getItem("login"));
   }, [])
 
-  function login() {
+  function login(user) {
     sessionStorage.setItem("isLoggedIn", "true")
+    setCurrentUser(user)
     setIsLoggedin(true)
   }
 
   function logout() {
     sessionStorage.setItem("isLoggedIn", "false")
     setIsLoggedin(false)
+    setCurrentUser("")
   }
 
   function addToCart(newItem) {
@@ -80,7 +83,7 @@ function App() {
 
   return (
     <div className="App">
-      <AppContexts.Provider value={{ isLoggedin, addToCart, cartItems, clearCart, users, setUsers }}>
+      <AppContexts.Provider value={{ isLoggedin, addToCart, cartItems, clearCart, users, setUsers, currentUser, setCurrentUser }}>
         <Header logout={logout}></Header>
         <Routes>
           <Route index element={isLoggedin == true ? <Products></Products> : <Login login={login}></Login>} />
@@ -89,6 +92,7 @@ function App() {
           </Route>
           <Route path='login' element={<Login login={login}></Login>} />
           <Route path='signup' element={<Signup/>}/>
+          <Route path='*' element={<NotFound></NotFound>}/>
         </Routes>
       </AppContexts.Provider>
     </div>

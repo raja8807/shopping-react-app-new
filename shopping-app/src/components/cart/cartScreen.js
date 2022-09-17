@@ -12,19 +12,20 @@ function CartScreen(props) {
     const cartItems = useContext(AppContexts).cartItems
     const clearCart = useContext(AppContexts).clearCart
 
-    useEffect(() => {
-        if (cartItems.length == 0) {
-            navigateto('/cart')
-        }
-    }, [cartItems])
+    // useEffect(() => {
+    //     if (cartItems.length == 0) {
+    //         navigateto('/cart')
+    //     }
+    // }, [cartItems])
 
     return (
         <div className='cartScreen'>
             <div className='container'>
                 <Outlet></Outlet>
                 {
-                    cartItems.length == 0 && <p>Nothing</p>
+                    cartItems.length == 0 && <p style={{textAlign : "center"}}>Nothing in cart</p>
                 }
+                <br/>
                 {
                     cartItems.map((item,i) => {
                         return <OrderedItems

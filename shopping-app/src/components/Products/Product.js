@@ -20,13 +20,13 @@ function Product(props) {
     return (
         <div className="product">
             <div className="productImage" onClick={()=>{
-                navigateto('/cart/description/'+props.id)
+                navigateto('/cart/description/'+props.product.id)
             }}>
-                <img src={props.image} />
+                <img src={props.product.image} />
             </div>
             <div style={{margin : "10px 0px"}} className="productDetails">
-                <h1>{props.name}</h1>
-                <h2 style={{margin : "10px 0px"}}>Rs.{props.price}</h2>
+                <h1>{props.product.name}</h1>
+                <h2 style={{margin : "10px 0px"}}>Rs.{props.product.price}</h2>
                 
             </div>
             <button className='addBtn' onClick={() => {
