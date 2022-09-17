@@ -13,6 +13,7 @@ import CartScreen from './components/cart/cartScreen';
 import ProductDescription from './components/cart/ProductDescription';
 import Signup from './components/signup/Signup';
 import NotFound from './components/NotFound';
+import Product from './components/Products/Product';
 
 
 function App() {
@@ -98,5 +99,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
