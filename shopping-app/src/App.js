@@ -20,7 +20,7 @@ function App() {
 
   const [isLoggedin, setIsLoggedin] = useState(false)
   const [cartItems, setCartItems] = useState([])
-  const [users, setUsers] = useState([...usersList])
+  // const [users, setUsers] = useState([])
   const [currentUser, setCurrentUser] = useState("")
 
   useEffect(() => {
@@ -36,6 +36,8 @@ function App() {
       setCartItems([...cart])
     }
   }, [])
+
+  
 
   function login(user) {
     sessionStorage.setItem("isLoggedIn", "true")
@@ -83,7 +85,7 @@ function App() {
 
   return (
     <div className="App">
-      <AppContexts.Provider value={{ isLoggedin, addToCart, cartItems, clearCart, users, setUsers, currentUser, setCurrentUser }}>
+      <AppContexts.Provider value={{ isLoggedin, addToCart, cartItems, clearCart, currentUser, setCurrentUser }}>
         <Header logout={logout}></Header>
         <Routes>
           <Route index element={isLoggedin == true ? <Products></Products> : <Login login={login}></Login>} />

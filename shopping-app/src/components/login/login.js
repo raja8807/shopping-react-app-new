@@ -11,14 +11,30 @@ import { useContext } from 'react'
 function Login(props) {
 
     // let navigateTo = useNavigate()
-    let users = useContext(AppContexts).users
+    // let users = useContext(AppContexts).users
     // let setUsers = useContext(AppContexts).setUsers
-
     const [chkField, setChk] = useState("input")
     const [pwdType, setPwdType] = useState("password")
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    const [users, setUsers] = useState([])
 
+
+    useEffect(()=>{
+        fetch('https://63106c3b826b98071a410ecf.mockapi.io/users').then((response)=>{
+          if(response.ok){
+            return response.json()
+          }
+          return false
+        }).then((users)=>{
+          setUsers((prev)=>{
+            return [...prev,...users]
+          })
+          console.log(users);
+        })
+      },[])
+
+    
     function userNameHandler(event) {
         setUserName(event.target.value)
     }
@@ -30,6 +46,7 @@ function Login(props) {
     function loginHandler(event) {
         event.preventDefault()
         let thisUser = users.find((user) => {
+            console.log(user);
             // console.log(user);
             return user.userName == userName
         })

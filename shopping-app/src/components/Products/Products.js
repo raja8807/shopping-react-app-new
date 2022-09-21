@@ -20,7 +20,7 @@ function Products() {
     useEffect(() => {
         setIsLoading(true)
         fetch('https://63106c3b826b98071a410ecf.mockapi.io/shopping').then((response) => {
-            console.log(response);
+            // console.log(response);
             if (response.ok) {
                 return response.json()
             }else if(response.status == 404){

@@ -15,8 +15,7 @@ function Cart() {
             navigateTo('/cart')
         }}>
             <div className='cartNum'>{cartItems.length}</div>
-            <p className='cartIcon'><i class="fa fa-shopping-cart"></i></p>
-            {/* <i class="fa-solid fa-cart-shopping"></i> */}
+            <p className='cartIcon'><i className="fa fa-shopping-cart"></i></p>
             
         </div>
     )
