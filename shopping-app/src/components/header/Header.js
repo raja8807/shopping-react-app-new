@@ -26,8 +26,9 @@ function Header(props) {
             <div className="container">
                 <div className="headerWrapper">
                     <div className="logo">
-                        <p>{"Hi "+currentUser}</p>
+                        <p>Logo.</p>
                     </div>
+                    {isLoggedIn && <p>Welcome {currentUser}</p>}
                     <nav>
                         <Link to="/">Home</Link>
                         <Link to='/signup'>Signup</Link>

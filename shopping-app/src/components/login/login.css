@@ -22,7 +22,7 @@
     flex-direction: column;
     text-align: center;
     box-shadow: 0px 0px 20px 1px rgba(128, 128, 128, 0.5);
-
+    position: relative;
 }
 
 .login h1{
@@ -59,20 +59,55 @@
 }
 
 #passwordInput{
-    border-radius: 20px 0px 0px 20px;
+    /* border-radius: 20px 0px 0px 20px; */
     margin: 20px 0px;
     /* height: 31px; */
 }
 
-.loginForm input[type="button"]{
+/* .loginForm input[type="button"]{
     width: 30px;
     border-radius: 0px 20px 20px 0px;
     background-color: white;
     margin-top: 1px;
     cursor: pointer;
     height: 32px;
+} */
+
+.eye{
+    background-color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 85px;
+    bottom: 198px;
+    cursor: pointer;
+    color: grey;
 }
 
-.loginForm input[type="button"]:hover{
-    background-color: grey;
+.eye:hover{
+    /* background-color: rgb(218, 218, 218); */
+    color: black;
+    transform: scale(1.1);
+
 }
+
+.needaccount{
+    font-size: 16px;
+}
+
+.needaccount span{
+    display: inline-block;
+    width: 70px;
+    height: 30px;
+    /* background-color: red; */
+}
+
+.needaccount span:hover{
+    transform: scale(1.1);
+}
+
+.signupLink{
+    font-weight: bolder;
+}
+
